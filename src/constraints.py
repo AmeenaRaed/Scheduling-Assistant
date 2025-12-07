@@ -6,16 +6,22 @@ different_day_pairs = [
 ]
 
 same_day_pairs = [
-    ("AI", "Algorithms"),
+    ("AI", "DevOps"),
     ("Cloud Computing", "Operating Systems")
 ]
 
 max_courses_per_day_limit = {
+    "Sun": 2,
     "Mon": 2,
     "Tue": 2,
     "Wed": 2,
-    "Thu": 2,
-    "Sun": 2
+    "Thu": 2
+}
+
+
+prepreq_courses = {
+    "Mobile Development": "Web Development", # Web is prereq for mobile
+    "AI": "Algorithms" #algo is prereq for AI
 }
 
 # 1: No time overlap
@@ -37,13 +43,13 @@ def different_day(course1, course2, assigned):
         return assigned[course1].split()[0] != assigned[course2].split()[0]
     return True
 
-# 5: Must be same day
+# 3: Must be same day
 def same_day(course1, course2, assigned):
     if (course1, course2) in same_day_pairs or (course2, course1) in same_day_pairs:
         return assigned[course1].split()[0] == assigned[course2].split()[0]
     return True
 
-# 6: Max courses per day
+# 4: Max courses per day
 def max_courses_per_day(assigned):
     day_counts = {}
     for slot in assigned.values():
@@ -55,7 +61,22 @@ def max_courses_per_day(assigned):
             return False
     return True
 
+# 5: Course should be taken first
+def satisfy_prereq(course1, course2, assigned):
+    days = {"Sun": 1, "Mon": 2, "Tue": 3, "Wed": 4, "Thu": 5}
 
+    if course1 in prepreq_courses and prepreq_courses[course1] == course2:
+        day1 = assigned[course1].split()[0]
+        day2 = assigned[course2].split()[0]  # prereq
+        return days[day2] < days[day1]
+
+    if course2 in prepreq_courses and prepreq_courses[course2] == course1:
+        day1 = assigned[course1].split()[0]
+        day2 = assigned[course2].split()[0]
+        return days[day1] < days[day2]
+
+    return True
+    
 def valid_assignment(assigned):
     courses = list(assigned.keys())
 
@@ -68,6 +89,8 @@ def valid_assignment(assigned):
             if not different_day(c1, c2, assigned):
                 return False
             if not same_day(c1, c2, assigned):
+                return False
+            if not satisfy_prereq(c1, c2, assigned):
                 return False
 
     if not max_courses_per_day(assigned):
