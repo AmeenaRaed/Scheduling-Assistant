@@ -5,11 +5,6 @@ different_day_pairs = [
     ("Web Development", "UI/UX Design")
 ]
 
-# cannot_take_together_pairs = [
-#     # ("Data Science", "Mobile Development"),
-#     ("Algorithms", "DevOps")
-# ]
-
 same_day_pairs = [
     ("AI", "Algorithms"),
     ("Cloud Computing", "Operating Systems")
@@ -42,13 +37,6 @@ def different_day(course1, course2, assigned):
         return assigned[course1].split()[0] != assigned[course2].split()[0]
     return True
 
-# # 4: Can't take specific courses together
-# def cannot_take_together(course1, course2, assigned):
-#     if (course1, course2) in cannot_take_together_pairs or (course2, course1) in cannot_take_together_pairs:
-#         return False
-#     return True
-
-
 # 5: Must be same day
 def same_day(course1, course2, assigned):
     if (course1, course2) in same_day_pairs or (course2, course1) in same_day_pairs:
@@ -79,8 +67,6 @@ def valid_assignment(assigned):
                 return False
             if not different_day(c1, c2, assigned):
                 return False
-            # if not cannot_take_together(c1, c2, assigned):
-            #     return False
             if not same_day(c1, c2, assigned):
                 return False
 
