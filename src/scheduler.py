@@ -2,6 +2,7 @@ from constraints import valid_assignment
 from variables import domains
 from memory_management import path_memory, domains_memory, temp_domains, remove_current_value
 from algo_helpers import preprocess_domains, generate_root, generate_next_state
+import copy
 
 def algo ():
     global domains
@@ -21,7 +22,7 @@ def algo ():
         if (len(path_memory) == 0 or not valid_assignment(path_memory[-1]) or len(path_memory[-1]) != originalSize): ## if it's invalid, it means we are in deadend, we need to pick other root
             remove_current_value(domains, current) ## we remove the root from the original list of domains
         else:
-            return path_memory[-1] ## valid solution found
+            return copy.deepcopy(path_memory[-1]) ## valid solution found
     return None ## no valid solution found
     
     
