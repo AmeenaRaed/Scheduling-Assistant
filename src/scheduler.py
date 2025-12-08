@@ -5,10 +5,10 @@ from algo_helpers import preprocess_domains, generate_root, generate_next_state
 import copy
 
 def algo ():
-    global domains
+    global domains, domains_memory, temp_domains, path_memory
     originalSize = len(domains)
     domains = preprocess_domains()  # Sort once!
-    domains_memory.append(temp_domains)
+    domains_memory.append(copy.deepcopy(temp_domains))
     while domains:
         current = generate_root() ## Pick most promising domain
         if current is None: ## No more branches to check --> No solution
@@ -21,6 +21,9 @@ def algo ():
         ## Check if solution is found
         if (len(path_memory) == 0 or not valid_assignment(path_memory[-1]) or len(path_memory[-1]) != originalSize): ## if it's invalid, it means we are in deadend, we need to pick other root
             remove_current_value(domains, current) ## we remove the root from the original list of domains
+            temp_domains = copy.deepcopy(domains) ## reset temp domains
+            domains_memory = []
+            path_memory = []
         else:
             return copy.deepcopy(path_memory[-1]) ## valid solution found
     return None ## no valid solution found
