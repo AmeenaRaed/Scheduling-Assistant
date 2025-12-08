@@ -1,13 +1,14 @@
 from constraints import valid_assignment
 from variables import domains, courses
-from select import select_course_MRV        
+from select import select_course_MRV
+        
 def algo(assigned={}):
     if len(assigned) == len(courses):
         if valid_assignment(assigned):
             return assigned
         return None
 
-    course = [c for c in courses if c not in assigned][0]
+    course = select_course_MRV(assigned)
 
     for slot in domains[course]:
         new_assignment = assigned.copy()
