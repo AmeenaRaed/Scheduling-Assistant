@@ -14,3 +14,4 @@ def slot_key(item):
     start_minutes = hour * 60 + minute
 
     return (DAY_ORDER[day], start_minutes)
+
