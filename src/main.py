@@ -8,6 +8,7 @@ def main():
         print("\nVALID SCHEDULE FOUND:\n")
         for course, slot in sorted_solution.items():
             print(f"{course:<20} → {slot}")
+        print("\nNo conflicts detected.\n")
     else:
         print("\nNo valid schedule exists with the current constraints.\n")
 

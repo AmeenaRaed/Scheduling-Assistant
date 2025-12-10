@@ -1,6 +1,6 @@
 from constraints import valid_assignment
 from variables import domains, courses
-from select import select_course_MRV
+from course_select import select_course_MRV
         
 def algo(assigned={}):
     if len(assigned) == len(courses):
