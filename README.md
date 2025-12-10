@@ -1,6 +1,6 @@
 # Scheduling-Assistant
 
-## Chosen projetc
+## Chosen project
 Intelligent Scheduling Assistant 
 
 ## Objective 
@@ -25,3 +25,8 @@ Course B → Tuesday 12:00
 No conflicts detected. 
 Tools: Python 
 Deliverables: Code, example run, explanation of constraints. 
+
+## Contributors 
+Ameena Raed  
+Khadija Ahmed Faraj
+Ohood Khalid   
