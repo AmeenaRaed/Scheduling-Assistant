@@ -86,29 +86,3 @@ domains = {
         "Thu 15:00-16:00"
     ]
 }
-
-# taks = ["workshop", ""]
-
-# instructors = ["Dr. Nabil",
-#                "Dr. Fatima",
-#                "Dr. Amal",
-#                "Dr. Ali",
-#                "Dr. Qasem",
-#                "Dr. Hadeel",
-#                "Dr. Taher", 
-#                "Dr. Mohammed", 
-#                "Dr. Abdulla",
-#                "Dr. Manal"]
-
-# course_instructor = {
-#     "AI": "Dr. Nabil",
-#     "Web Development": "Dr. Abdulla",
-#     "Data Science": "Dr. Fatima",
-#     "Algorithms": "Dr. Ali",
-#     "Cloud Computing": "Dr. Amal",
-#     "Mobile Development": "Dr. Manal",
-#     "Internet of Things": "Dr. Mohammed",
-#     "DevOps": "Dr. Taher",
-#     "Operating Systems": "Dr. Qasem",
-#     "UI/UX Design": "Dr. Hadeel"
-# }
